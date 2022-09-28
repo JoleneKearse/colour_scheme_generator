@@ -31,6 +31,13 @@ const form = document.getElementById("form");
 const schemeDisplay = document.getElementById("scheme-display");
 const schemeCodes = document.getElementById("scheme-codes");
 
+const addColorDisplay = (arr) => {
+  const colorDiv = document.createElement("div");
+  colorDiv.classList.add("color-display-divs");
+  colorDiv.style.backgroundColor = arr;
+  schemeDisplay.appendChild(colorDiv);
+};
+
 form.addEventListener("submit", function (e) {
   e.preventDefault();
   // get user input
@@ -47,9 +54,11 @@ form.addEventListener("submit", function (e) {
     .then((resp) => resp.json())
     .then((data) => {
       // put color data in an array
-      const colorsArr = data.colors;
-      console.log(colorsArr);
-      const ColorsData = colorsArr.map((color) => color.hex.value);
+      const ColorsData = data.colors;
       console.log(ColorsData);
+      // get all hex codes in an array
+      const ColorsHexCodes = ColorsData.map((color) => color.hex.value);
+      console.log(ColorsHexCodes);
+      ColorsHexCodes.forEach((ele) => addColorDisplay(ele));
     });
 });

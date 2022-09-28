@@ -87,6 +87,11 @@ button {
     min-height: 40vh;
 }
 
+.color-display-divs {
+    height: 20vh;
+    width: 100%;
+}
+
 
 /* ---------- COMPONENTS ----------*/
 .theme-icon,
