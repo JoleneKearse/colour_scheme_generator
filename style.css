@@ -88,6 +88,8 @@ button {
 }
 
 .color-display-divs {
+    display: grid;
+    place-items: center;
     height: 20vh;
     width: 100%;
 }
