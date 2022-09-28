@@ -29,13 +29,18 @@ document.querySelector(".theme-icon").addEventListener("click", () => {
 
 const form = document.getElementById("form");
 const schemeDisplay = document.getElementById("scheme-display");
+let colorDiv;
 
 const addColorDisplay = (arr) => {
   // create color divs
-  const colorDiv = document.createElement("div");
+  colorDiv = document.createElement("div");
   colorDiv.classList.add("color-display-divs");
   colorDiv.style.backgroundColor = arr;
   schemeDisplay.appendChild(colorDiv);
+  addColorCode(arr);
+};
+
+const addColorCode = (arr) => {
   // add text to color divs
   const hexCode = document.createElement("p");
   hexCode.innerHTML = `<p>${arr}</p>`;
