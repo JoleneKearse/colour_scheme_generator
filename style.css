@@ -1,0 +1,128 @@
+/* ---------- CUSTOM PROPERTIES ----------*/
+:root {
+    --gap-sm: .5rem;
+    --gap-med: 1rem;
+}
+
+:root:not(.light) {
+    --clr-background: #1F2937;
+    --clr-text: #FFFFFE;
+}
+
+:root.light {
+    --clr-background: #FFFFFE;
+    --clr-text: #1F2937;
+}
+
+/* ---------- RESET ----------*/
+
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100vw;
+}
+
+html, 
+body, 
+div, 
+span, 
+input, 
+select,
+p {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    text-align: center;
+    line-height: 1.2;
+    color: var(--clr-text);
+    background-color: var(--clr-background);
+}
+
+button {
+    font: inherit;
+}
+
+/* ---------- TYPOGRAPHY ----------*/
+
+
+
+
+/* ---------- LAYOUT ----------*/
+.container {
+    width: 70vw;
+    margin-top: var(--gap-med);
+    margin-inline: auto;
+    border: 1px solid lime;
+}
+
+.options,
+.scheme-display,
+.scheme-codes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap-med);
+}
+
+.options {
+    flex-direction: column;
+}
+
+.scheme-display {
+    min-height: 40vh;
+}
+
+
+/* ---------- COMPONENTS ----------*/
+.theme-icon,
+button {
+    cursor: pointer;
+}
+
+:root:not(.light) .theme-icon .fa-sun {
+    display: none;
+}
+
+:root:not(.light) .theme-icon .fa-moon {
+    color: var(--clr-text);
+}
+
+:root.light .theme-icon .fa-moon {
+    display: none;
+}
+
+.sr-only {
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+.theme-icon:hover,
+.theme-icon:focus {
+    transform: scale(1.05);
+}
+
+button {
+    padding: var(--gap-sm);
+    background-color: var(--clr-light);
+    border: .05rem solid var(--clr-dark);
+}
+
+
+
+/* ---------- MEDIA QUERIES ----------*/

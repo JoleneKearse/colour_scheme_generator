@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Jolene Kearse">
+    <meta name="description" content="A Colour Scheme Generator build with Vanilla JavaScript and The Colour API">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,900;1,400&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/fc831cd623.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Colour Scheme Generator</title>
+</head>
+<body>
+    <button type="button" class="theme-icon">
+        <i class="fa-solid fa-moon" aria-hidden="true" title="Click to change to dark mode."></i>
+        <i class="fa-solid fa-sun" aria-hidden="true" title="Click to change to light mode."></i>
+        <span class="sr-only">Toggle between dark and light mode</span>
+    </button>
+        <div class="options container">
+            <input type="color" name="color" id="seedColor">
+            <select name="scheme" id="scheme-select">
+                <option value="">-- Pick colour scheme --</option>
+                <option value="monochrome">monochrome</option>
+                <option value="monochrome-dark">monochrome-dark</option>
+                <option value="monochrome-light">monochrome-light</option>
+                <option value="analogic">analogic</option>
+                <option value="complement">complement</option>
+                <option value="analogic-complement">analogic-complement</option>
+                <option value="triad">triad</option>
+                <option value="quad">quad</option>
+            </select>
+            <button>Get Scheme</button>
+        </div>
+        <div id="scheme-display container"></div>
+        <div id="scheme-codes container"></div>
+    </div> <!-- /container -->
+    <script src="index.js"></script>
+</body>
+</html>
