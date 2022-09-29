@@ -67,7 +67,6 @@ button {
     width: 70vw;
     margin-top: var(--gap-med);
     margin-inline: auto;
-    border: 1px solid lime;
 }
 
 .options,
