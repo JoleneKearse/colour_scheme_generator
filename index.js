@@ -56,10 +56,6 @@ const addColorDisplayHsv = (arr) => {
   addColorCode(arr);
 };
 
-const getHexCodesToDisplay = (arr) => {
-  
-};
-
 form.addEventListener("submit", function (e) {
   e.preventDefault();
   // get user input
@@ -82,22 +78,23 @@ form.addEventListener("submit", function (e) {
       const ColorsHexCodes = ColorsData.map((color) => color.hex.value);
       const ColorsRgbCodes = ColorsData.map((color) => color.rgb.value);
       const ColorsHslCodes = ColorsData.map((color) => color.hsl.value);
-      const ColorsHsvCodes = ColorsData.map((color) => color.hsv.value);
+      // const ColorsHsvCodes = ColorsData.map((color) => color.hsv.value);
       // const ColorsCmykCodes = ColorsData.map((color) => color.cmyk.value);
 
-      // USE SWITCH BEFORE DISPLAYING THE COLORS OR CODES
+      // DISPLAY THE COLORS AND CODES
       switch (codeName) {
         case "hex":
           ColorsHexCodes.forEach((ele) => addColorDisplay(ele));
+          break;
         case "rgb":
           ColorsRgbCodes.forEach((ele) => addColorDisplay(ele));
           break;
         case "hsl":
           ColorsHslCodes.forEach((ele) => addColorDisplay(ele));
           break;
-        case "hsv":
-          ColorsHsvCodes.forEach((ele) => addColorDisplayHsv(ele));
-          break;
+        // case "hsv":
+        //   ColorsHsvCodes.forEach((ele) => addColorDisplayHsv(ele));
+        //   break;
         default:
           ColorsHexCodes.forEach((ele) => addColorDisplay(ele));
       }
