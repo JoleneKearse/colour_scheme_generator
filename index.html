@@ -7,7 +7,7 @@
     <meta name="author" content="Jolene Kearse">
     <meta name="description" content="A Colour Scheme Generator build with Vanilla JavaScript and The Colour API">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,900;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/fc831cd623.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <title>Colour Scheme Generator</title>
@@ -20,8 +20,9 @@
     </button>
 
     <form id="form" class="options container">
-        <input type="color" name="color" id="seedColor" value="#9E0FD2">
-        <select name="scheme" id="schemeSelect">
+        <input type="color" name="color" id="seedColor" value="#9E0FD2"
+        title="Pick your colour">
+        <select name="scheme" id="schemeSelect" title="Click to see options">
             <option value="">-- Pick colour scheme --</option>
             <option value="monochrome">monochrome</option>
             <option value="monochrome-dark">monochrome-dark</option>
@@ -32,15 +33,15 @@
             <option value="triad">triad</option>
             <option value="quad">quad</option>
         </select>
-        <select name="colorCodeName" id="colorCodeName">
+        <select name="colorCodeName" id="colorCodeName" title="Click to see options">
             <option value="">-- Pick colour code --</option>
             <option value="hex">hex</option>
             <option value="rgb">rgb</option>
             <option value="hsl">hsl</option>
-            <!-- <option value="hsv">hsv</option> -->
+            <option value="hsv">hsv</option>
             <!-- <option value="cmyk">cmyk</option> -->
         </select>
-        <button>Get Scheme</button>
+        <button id="submit">Get Scheme</button>
     </form>
     <div id="scheme-display" class="container"></div>
     <script src="index.js"></script>

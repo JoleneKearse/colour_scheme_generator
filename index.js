@@ -38,7 +38,6 @@ const addColorDisplay = (arr) => {
   colorDiv = document.createElement("div");
   colorDiv.classList.add("color-display-divs");
   colorDiv.style.backgroundColor = arr;
-  colorDiv.style.backgroundColor = arr;
   schemeDisplay.appendChild(colorDiv);
   addColorCode(arr);
 };
@@ -47,6 +46,18 @@ const addColorCode = (arr) => {
   const colorCode = document.createElement("p");
   colorCode.innerHTML = `<p>${arr}</p>`;
   colorDiv.appendChild(colorCode);
+};
+
+const addColorDisplayHsv = (arr) => {
+  colorDiv = document.createElement("div");
+  colorDiv.classList.add("color-display-divs");
+  colorDiv.style.backgroundColor = getHexCodesToDisplay(arr);
+  schemeDisplay.appendChild(colorDiv);
+  addColorCode(arr);
+};
+
+const getHexCodesToDisplay = (arr) => {
+  
 };
 
 form.addEventListener("submit", function (e) {
@@ -71,7 +82,7 @@ form.addEventListener("submit", function (e) {
       const ColorsHexCodes = ColorsData.map((color) => color.hex.value);
       const ColorsRgbCodes = ColorsData.map((color) => color.rgb.value);
       const ColorsHslCodes = ColorsData.map((color) => color.hsl.value);
-      // const ColorsHsvCodes = ColorsData.map((color) => color.hsv.value);
+      const ColorsHsvCodes = ColorsData.map((color) => color.hsv.value);
       // const ColorsCmykCodes = ColorsData.map((color) => color.cmyk.value);
 
       // USE SWITCH BEFORE DISPLAYING THE COLORS OR CODES
@@ -83,6 +94,9 @@ form.addEventListener("submit", function (e) {
           break;
         case "hsl":
           ColorsHslCodes.forEach((ele) => addColorDisplay(ele));
+          break;
+        case "hsv":
+          ColorsHsvCodes.forEach((ele) => addColorDisplayHsv(ele));
           break;
         default:
           ColorsHexCodes.forEach((ele) => addColorDisplay(ele));

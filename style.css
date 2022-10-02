@@ -58,7 +58,9 @@ button {
 }
 
 /* ---------- TYPOGRAPHY ----------*/
-
+select {
+    font-weight: 300;
+}
 
 
 
@@ -96,7 +98,11 @@ button {
 
 /* ---------- COMPONENTS ----------*/
 .theme-icon,
+#seedColor,
+select,
 button {
+    background-color: transparent;
+    border: none;
     cursor: pointer;
 }
 
@@ -123,10 +129,53 @@ button {
     transform: scale(1.05);
 }
 
+input[type="color" i] {
+    appearance: none;
+    width: 2em;
+    height: 2em;
+    background-color: transparent;
+    border-radius: .25em !important;
+}
+
+select {
+    background-color: #CED8E6;
+}
+
+select:focus,
+select:hover {
+    background-color: #A3ADBB;
+    font-weight: 400;
+}
+
+select::-webkit-input-placeholder {
+    background-color: #6B7583;
+}
+
+select:checked::after {
+    transform: translate(-50%, -50%) rotate(90deg) scaleX(-1) scaleY(1.75);
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+input[type=color],
+select,
 button {
+    border: none;
+    border-radius: .25em;
+}
+
+#submit {
     padding: var(--gap-sm);
-    background-color: var(--clr-light);
+    font-weight: 600;
+    background-image: linear-gradient(90deg, #CED8E6, #A3ADBB, #6B7583);
     border: .05rem solid var(--clr-dark);
+}
+
+#submit:focus,
+#submit:hover {
+    background-image: linear-gradient(135deg, #6B7583, #A3ADBB, #CED8E6);
 }
 
 
