@@ -30,6 +30,7 @@ document.querySelector(".theme-icon").addEventListener("click", () => {
 // variables
 const form = document.getElementById("form");
 const schemeDisplay = document.getElementById("scheme-display");
+const resetBtnDisplay = document.getElementById("resetBtnDisplay");
 let colorDiv;
 
 // functions
@@ -48,12 +49,24 @@ const addColorCode = (arr) => {
   colorDiv.appendChild(colorCode);
 };
 
-const addColorDisplayHsv = (arr) => {
-  colorDiv = document.createElement("div");
-  colorDiv.classList.add("color-display-divs");
-  colorDiv.style.backgroundColor = getHexCodesToDisplay(arr);
-  schemeDisplay.appendChild(colorDiv);
-  addColorCode(arr);
+const resetBtn = () => {
+  // create div and button
+  const refreshDiv = document.createElement("div");
+  refreshDiv.classList.add("refresh-btn-div");
+  resetBtnDisplay.appendChild(refreshDiv);
+  const refreshBtn = document.createElement("button");
+  refreshBtn.classList.add("resetBtn");
+  refreshBtn.setAttribute("id", "ResetBtn");
+  refreshBtn.setAttribute("type", "reset");
+  refreshBtn.setAttribute("title", "Click to generate a new scheme");
+  refreshBtn.setAttribute("onClick", "reloadPage()");
+  refreshBtn.textContent = "Reset";
+  refreshDiv.appendChild(refreshBtn);
+};
+
+const reloadPage = () => {
+  console.log("clicked");
+  window.location.reload();
 };
 
 form.addEventListener("submit", function (e) {
@@ -99,4 +112,5 @@ form.addEventListener("submit", function (e) {
           ColorsHexCodes.forEach((ele) => addColorDisplay(ele));
       }
     });
+  resetBtn();
 });
