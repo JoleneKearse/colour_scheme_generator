@@ -32,6 +32,7 @@ const form = document.getElementById("form");
 const schemeDisplay = document.getElementById("scheme-display");
 const resetBtnDisplay = document.getElementById("resetBtnDisplay");
 let colorDiv;
+let colorCode;
 
 // functions
 const addColorDisplay = (arr) => {
@@ -44,8 +45,20 @@ const addColorDisplay = (arr) => {
 };
 
 const addColorCode = (arr) => {
-  const colorCode = document.createElement("p");
-  colorCode.innerHTML = `<p>${arr}</p>`;
+  colorCode = document.createElement("p");
+  colorCode.innerHTML = `
+   <p>${arr}</p>
+   <i 
+    class="fa-regular fa-eye" 
+    title="Change text color"
+    onClick="changeFontColor()">
+   </i>
+    <i 
+      class="fa-regular fa-clipboard"
+      title="Copy code"
+      onClick="copyToClipboard()">
+    </i>`;
+  colorCode.setAttribute("id", "ColorCode");
   colorDiv.appendChild(colorCode);
 };
 
@@ -65,8 +78,13 @@ const resetBtn = () => {
 };
 
 const reloadPage = () => {
-  console.log("clicked");
   window.location.reload();
+};
+
+const changeFontColor = () => {
+  console.log("clicked");
+  const ColorCode = document.getElementById("ColorCode");
+  ColorCode.style.color = "#FFFFFE";
 };
 
 form.addEventListener("submit", function (e) {
