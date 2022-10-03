@@ -48,16 +48,18 @@ const addColorCode = (arr) => {
   colorCode = document.createElement("p");
   colorCode.innerHTML = `
    <p>${arr}</p>
-   <i 
-    class="fa-regular fa-eye" 
-    title="Change text color"
-    onClick="changeFontColor()">
-   </i>
+   <div class="icon-box">
     <i 
-      class="fa-regular fa-clipboard"
-      title="Copy code"
-      onClick="copyToClipboard()">
-    </i>`;
+      class="fa-regular fa-eye" 
+      title="Change text color"
+      onClick="changeFontColor()">
+    </i>
+      <i 
+        class="fa-regular fa-clipboard"
+        title="Copy code"
+        onClick="copyToClipboard()">
+      </i>
+    </div>`;
   colorCode.setAttribute("id", "ColorCode");
   colorDiv.appendChild(colorCode);
 };

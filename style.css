@@ -96,6 +96,12 @@ select {
     width: 100%;
 }
 
+.icon-box {
+    display: flex;
+    justify-content: center;
+    gap: .5em;
+}
+
 
 /* ---------- COMPONENTS ----------*/
 .theme-icon,
@@ -180,6 +186,11 @@ button {
 .resetBtn:focus,
 .resetBtn:hover {
     background-image: linear-gradient(135deg, #6B7583, #A3ADBB, #CED8E6);
+}
+
+i:hover,
+i:focus {
+    opacity: .65;
 }
 
 
