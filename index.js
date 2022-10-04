@@ -44,8 +44,8 @@ const addColorDisplay = (arr) => {
   addColorCode(arr);
 };
 
-const addColorCode = (arr) => {
-  colorCode = document.createElement("p");
+const addColorCode = (arr, index) => {
+  colorCode = document.createElement("div");
   colorCode.innerHTML = `
    <p>${arr}</p>
    <div class="icon-box">
@@ -54,13 +54,15 @@ const addColorCode = (arr) => {
       title="Change text color"
       onClick="changeFontColor()">
     </i>
-      <i 
-        class="fa-regular fa-clipboard"
-        title="Copy code"
-        onClick="copyToClipboard()">
-      </i>
+    <i 
+      class="fa-regular fa-clipboard"
+      title="Copy code"
+      id="copyCode"
+      onClick="copyToClipboard()">
+    </i>
     </div>`;
   colorCode.setAttribute("id", "ColorCode");
+  console.log(colorCode);
   colorDiv.appendChild(colorCode);
 };
 
@@ -89,6 +91,11 @@ const changeFontColor = () => {
   ColorCode.style.color = "#FFFFFE";
 };
 
+// TODO: Add a unique id to each p tag, maybe through array? So I can copy the code to clipboard.
+const copyToClipboard = () => {
+  const copyCode = document.getElementById("copyCode");
+};
+
 form.addEventListener("submit", function (e) {
   e.preventDefault();
   // get user input
@@ -108,9 +115,9 @@ form.addEventListener("submit", function (e) {
       // put color data in an array
       const ColorsData = data.colors;
       // get all color codes in an array
-      const ColorsHexCodes = ColorsData.map((color) => color.hex.value);
-      const ColorsRgbCodes = ColorsData.map((color) => color.rgb.value);
-      const ColorsHslCodes = ColorsData.map((color) => color.hsl.value);
+      const ColorsHexCodes = ColorsData.map((color, index) => color.hex.value);
+      const ColorsRgbCodes = ColorsData.map((color, index) => color.rgb.value);
+      const ColorsHslCodes = ColorsData.map((color, index) => color.hsl.value);
       // const ColorsHsvCodes = ColorsData.map((color) => color.hsv.value);
       // const ColorsCmykCodes = ColorsData.map((color) => color.cmyk.value);
 
