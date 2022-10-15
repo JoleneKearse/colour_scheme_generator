@@ -38,7 +38,7 @@ let pCode;
 
 // functions
 const displayColorData = (arr, index) => {
-  addColorDisplay(arr);
+  addColorDisplay(arr, index);
   addColorCode(arr, index);
 };
 
@@ -53,7 +53,7 @@ const addColorDisplay = (arr) => {
 const addColorCode = (arr, index) => {
   colorCode = document.createElement("div");
   colorCode.innerHTML = `
-   <p class="pCode">${arr}</p>
+   <p id="pCode${index}">${arr}</p>
    <div class="icon-box">
     <i 
       class="fa-regular fa-eye" 
@@ -61,13 +61,14 @@ const addColorCode = (arr, index) => {
       onClick="changeFontColor()">
     </i>
     <i 
-      class="fa-regular fa-clipboard"
+      class="fa-regular fa-clipboard copyCodeBtn"
       title="Copy code"
-      id="copyCodeBtn"
-      onClick="copyToClipboard()">
+      class="copyCodeBtn"
+      id="copyCodeBtn${index}"
+      onClick="copyToClipboard(this.id)">
     </i>
     </div>`;
-  colorCode.setAttribute("id", "ColorCode");
+  colorCode.setAttribute("id", `ColorCode${index}`);
   // pCode = document.getElementsByClassName("pCode");
   // console.log(pCode);
   colorDiv.appendChild(colorCode);
@@ -95,24 +96,65 @@ const reloadPage = () => {
 const changeFontColor = () => {
   console.log("clicked");
   const ColorCode = document.getElementById("ColorCode");
-  ColorCode.style.color = "#FFFFFE";
+  ColorCode.style.color = "#000";
 };
 
-// TODO: Add a unique id to each p tag, maybe through array? So I can copy the code to clipboard.
-const copyToClipboard = () => {
-  // obtain all codes
-  pCode = document.getElementsByClassName("pCode");
-  const code1 = pCode.item(0).innerText;
-  const code2 = pCode.item(1).innerText;
-  const code3 = pCode.item(2).innerText;
-  const code4 = pCode.item(3).innerText;
-  const code5 = pCode.item(4).innerText;
-  const code6 = pCode.item(5).innerText;
-  // if sibling element === code, copy to clipboard
-  let currentDiv = document.getElementById("ColorCode");
-  let pSibling = currentDiv.nextElementSibling;
-  console.log(currentDiv);
-  console.log(pSibling);
+// TODO: How to access only clicked btn???
+const copyToClipboard = (id) => {
+  // this displays the proper id, now I want to associate that id with the colorcode id. I set up the codes on lines 113-118.
+  // alert(id);
+  const btn1 = document.getElementById("copyCodeBtn0");
+  const btn2 = document.getElementById("copyCodeBtn1");
+  const btn3 = document.getElementById("copyCodeBtn2");
+  const btn4 = document.getElementById("copyCodeBtn3");
+  const btn5 = document.getElementById("copyCodeBtn4");
+  const btn6 = document.getElementById("copyCodeBtn5");
+
+  const code1 = document.getElementById("pCode0");
+  const code2 = document.getElementById("pCode1");
+  const code3 = document.getElementById("pCode2");
+  const code4 = document.getElementById("pCode3");
+  const code5 = document.getElementById("pCode4");
+  const code6 = document.getElementById("pCode5");
+
+  // I thought this might copy the correct code, but it doesn't
+  if (id === btn1) {
+    // alert(code1);
+    const codeToSee = code1.innerText;
+    console.log(codeToSee);
+    navigator.clipboard.writeText(codeToSee);
+    // alert(`${codeToSee} copied`);
+  } else if (id === btn2) {
+    // alert(code2);
+    const codeToSee = code2.innerText;
+    console.log(codeToSee);
+    navigator.clipboard.writeText(codeToSee);
+    // alert(`${codeToSee} copied`);
+  } else if (id === btn3) {
+    // alert(code3);
+    const codeToSee = code3.innerText;
+    console.log(codeToSee);
+    navigator.clipboard.writeText(codeToSee);
+    // alert(`${codeToSee} copied`);
+  } else if (id === btn4) {
+    // alert(code4);
+    const codeToSee = code4.innerText;
+    console.log(codeToSee);
+    navigator.clipboard.writeText(codeToSee);
+    // alert(`${codeToSee} copied`);
+  } else if (id === btn5) {
+    // alert(code5);
+    const codeToSee = code5.innerText;
+    console.log(codeToSee);
+    navigator.clipboard.writeText(codeToSee);
+    // alert(`${codeToSee} copied`);
+  } else if (id === btn6) {
+    // alert(code6);
+    const codeToSee = code6.innerText;
+    console.log(codeToSee);
+    navigator.clipboard.writeText(codeToSee);
+    // alert(`${codeToSee} copied`);
+  }
 };
 
 form.addEventListener("submit", function (e) {
@@ -138,24 +180,24 @@ form.addEventListener("submit", function (e) {
       const ColorsRgbCodes = ColorsData.map((color) => color.rgb.value);
       const ColorsHslCodes = ColorsData.map((color) => color.hsl.value);
       // const ColorsHsvCodes = ColorsData.map((color) => color.hsv.value);
-      // const ColorsCmykCodes = ColorsData.map((color) => color.cmyk.value);
+      // const ColorsCmykCodes = ColorsData.map((color) => color.cmyk.value);;
 
       // DISPLAY THE COLORS AND CODES
       switch (codeName) {
         case "hex":
-          ColorsHexCodes.forEach((ele, index) => displayColorData(ele, index));
+          ColorsHexCodes.map((ele, index) => displayColorData(ele, index));
           break;
         case "rgb":
-          ColorsRgbCodes.forEach((ele, index) => displayColorData(ele, index));
+          ColorsRgbCodes.map((ele, index) => displayColorData(ele, index));
           break;
         case "hsl":
-          ColorsHslCodes.forEach((ele, index) => displayColorData(ele, index));
+          ColorsHslCodes.map((ele, index) => displayColorData(ele, index));
           break;
         // case "hsv":
         //   ColorsHsvCodes.forEach((ele) => addColorDisplayHsv(ele));
         //   break;
         default:
-          ColorsHexCodes.forEach((ele) => displayColorData(ele));
+          ColorsHexCodes.map((ele) => displayColorData(ele));
       }
     });
   resetBtn();
